@@ -1,0 +1,78 @@
+#include <Servo.h>
+char t;
+Servo Servo1;
+void setup() {
+  Servo1.attach(8);
+  Servo1.write(90);
+  pinMode(4,OUTPUT);
+  pinMode(3,OUTPUT);
+Serial.begin(9600);  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  if (Serial.available()){
+    t=Serial.read();
+    Serial.println(t);
+   // delay(1000);
+    }
+    if(t== 'F'){
+      digitalWrite(4,HIGH);
+       digitalWrite(3,LOW);
+      }
+
+       else if(t== 'B'){
+      digitalWrite(3,HIGH);
+       digitalWrite(4,LOW);
+      }
+       if(t== 'S'){
+      digitalWrite(4,LOW);
+       digitalWrite(3,LOW);
+      }
+       if(t=='L'){
+    Servo1.write(63);
+    }
+  
+    else if(t=='R'){
+    Servo1.write(112);
+    }
+    else if(t=='G')
+    {
+      digitalWrite(4,HIGH);
+       digitalWrite(3,LOW);
+       Servo1.write(63);
+      }
+
+      else if(t=='I')
+      {
+        digitalWrite(4,HIGH);
+       digitalWrite(3,LOW);
+       Servo1.write(112);
+        }
+
+        else if(t=='H')
+        {
+          digitalWrite(3,HIGH);
+       digitalWrite(4,LOW);
+       Servo1.write(63);
+          }
+
+         else if(t=='J')
+         {
+          digitalWrite(3,HIGH);
+       digitalWrite(4,LOW);
+       Servo1.write(112);
+          } 
+   
+      else if (t=='D'){
+        digitalWrite(4,LOW);
+        digitalWrite(3,LOW);
+        }
+        else  {
+      Servo1.write(90);
+      }
+
+      
+  // put your main code here, to run repeatedly:
+
+}
